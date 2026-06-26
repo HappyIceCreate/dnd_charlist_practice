@@ -1,0 +1,38 @@
+# Unity generated files
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+*.csproj
+*.sln
+*.user
+*.unityproj
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Visual Studio
+.vs/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Unity output
+*.apk
+*.aab
+*.unitypackage
+
+# Rider
+*.sln.iml
+
+# Packages
+Packages/packages-lock.json
