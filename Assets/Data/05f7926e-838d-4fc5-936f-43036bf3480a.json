@@ -1,0 +1,30 @@
+{
+  "id": "05f7926e-838d-4fc5-936f-43036bf3480a",
+  "name": "Тестовый персонаж",
+  "level": 5,
+  "experience": 0,
+  "characterClass": "Воин",
+  "race": "Человек",
+  "background": null,
+  "alignment": null,
+  "strength": 16,
+  "dexterity": 14,
+  "constitution": 15,
+  "intelligence": 10,
+  "wisdom": 12,
+  "charisma": 8,
+  "inventory": [
+    {
+      "itemName": "Меч",
+      "quantity": 1,
+      "weight": 3.5
+    }
+  ],
+  "spells": [
+    {
+      "name": "Огненный шар",
+      "level": 3,
+      "school": "Эвокация"
+    }
+  ]
+}
