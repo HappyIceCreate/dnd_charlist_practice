@@ -1,0 +1,30 @@
+{
+  "id": "d32497e7-6339-4b66-b814-3aad5103d68f",
+  "name": "Гимли",
+  "level": 3,
+  "experience": 0,
+  "characterClass": "Воин",
+  "race": "Дварф",
+  "background": null,
+  "alignment": null,
+  "strength": 17,
+  "dexterity": 12,
+  "constitution": 16,
+  "intelligence": 10,
+  "wisdom": 12,
+  "charisma": 8,
+  "inventory": [
+    {
+      "itemName": "Боевой топор",
+      "quantity": 1,
+      "weight": 4.5
+    }
+  ],
+  "spells": [
+    {
+      "name": "Лечение ран",
+      "level": 1,
+      "school": "Восстановление"
+    }
+  ]
+}
