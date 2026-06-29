@@ -6,15 +6,16 @@ public class UIMainMenu : MonoBehaviour
 {
     private List<CharacterData> characters = new List<CharacterData>();
     private ListView characterList;
-
-    // Ссылки на кнопки
     private Button createBtn;
     private Button editBtn;
     private Button deleteBtn;
 
+    // Ссылка на форму
+    public GameObject characterForm;
+    private UICharacterForm formScript;
+
     private void OnEnable()
     {
-        // Находим корневой элемент UI
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         if (root == null)
         {
@@ -35,12 +36,18 @@ public class UIMainMenu : MonoBehaviour
         createBtn.clicked += OnCreateClicked;
         editBtn.clicked += OnEditClicked;
         deleteBtn.clicked += OnDeleteClicked;
+
+        // Получаем скрипт формы
+        if (characterForm != null)
+        {
+            formScript = characterForm.GetComponent<UICharacterForm>();
+        }
+
         RefreshList();
     }
 
-    private void RefreshList()
+    public void RefreshList()
     {
-        // Загружаем всех персонажей из папки Data/
         characters = DataManager.LoadAllCharacters();
         characterList.itemsSource = characters;
         characterList.makeItem = () => new Label();
@@ -55,16 +62,44 @@ public class UIMainMenu : MonoBehaviour
 
     private void OnCreateClicked()
     {
-        Debug.Log("Нажата кнопка СОЗДАТЬ");
+        Debug.Log("OnCreateClicked вызван");
+        Debug.Log("formScript = " + (formScript == null ? "NULL" : "OK"));
+        Debug.Log("characterForm = " + (characterForm == null ? "NULL" : "OK"));
+
+        if (formScript != null)
+        {
+            formScript.SetCreateMode();
+        }
     }
 
     private void OnEditClicked()
     {
-        Debug.Log("Нажата кнопка РЕДАКТИРОВАТЬ");
+        int selectedIndex = characterList.selectedIndex;
+        if (selectedIndex < 0 || selectedIndex >= characters.Count)
+        {
+            Debug.LogWarning("Выберите персонажа для редактирования");
+            return;
+        }
+        CharacterData selected = characters[selectedIndex];
+        if (formScript != null)
+        {
+            formScript.SetEditMode(selected); // форма сама делает SetActive(true)
+        }
     }
 
     private void OnDeleteClicked()
     {
-        Debug.Log("Нажата кнопка УДАЛИТЬ");
+        int selectedIndex = characterList.selectedIndex;
+        if (selectedIndex < 0 || selectedIndex >= characters.Count)
+        {
+            Debug.LogWarning("Выберите персонажа для удаления");
+            return;
+        }
+
+        CharacterData selected = characters[selectedIndex];
+        Debug.Log("Удаление персонажа: " + selected.name);
+
+        DataManager.DeleteCharacter(selected.id);
+        RefreshList();
     }
 }

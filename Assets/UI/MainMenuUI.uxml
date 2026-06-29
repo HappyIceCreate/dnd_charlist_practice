@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="rootContainer" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(26, 26, 26);">
         <ui:Label text="Управление персонажами D&amp;D" name="titleLabel" style="font-size: 24px; color: rgb(255, 255, 255);"/>
-        <ui:ListView name="characterList" style="width: 100%; height: 300px;"/>
+        <ui:ListView name="characterList" style="width: 100%; height: 300px; color: rgb(255, 255, 255);"/>
         <ui:VisualElement name="buttonContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%;">
             <ui:Button text="Создать" name="createBtn"/>
             <ui:Button text="Редактировать" name="editBtn"/>
