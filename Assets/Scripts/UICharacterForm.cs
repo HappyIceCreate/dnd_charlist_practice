@@ -21,18 +21,18 @@ public class UICharacterForm : MonoBehaviour
         // Ждём один кадр чтобы UIDocument инициализировался
         StartCoroutine(SetCreateModeDelayed());
     }
-    
+
     private System.Collections.IEnumerator SetCreateModeDelayed()
     {
-        yield return null; // ждём один кадр
-        
+        yield return null;
+
         root = GetComponent<UIDocument>().rootVisualElement;
-        
+
         var formTitle = root.Q<Label>("formTitle");
         var nameField = root.Q<TextField>("nameField");
         var levelField = root.Q<IntegerField>("levelField");
-        var raceField = root.Q<TextField>("raceField");
-        var classField = root.Q<TextField>("classField");
+        var raceField = root.Q<DropdownField>("raceField");
+        var classField = root.Q<DropdownField>("classField");
         var strField = root.Q<IntegerField>("strField");
         var dexField = root.Q<IntegerField>("dexField");
         var conField = root.Q<IntegerField>("conField");
@@ -41,8 +41,18 @@ public class UICharacterForm : MonoBehaviour
         var chaField = root.Q<IntegerField>("chaField");
         var errorLabel = root.Q<Label>("errorLabel");
 
-        Debug.Log("levelField = " + (levelField == null ? "NULL" : "OK"));
-        Debug.Log("errorLabel = " + (errorLabel == null ? "NULL" : "OK"));
+        // Заполняем выпадающие списки
+        raceField.choices = new System.Collections.Generic.List<string>
+    {
+        "Человек", "Эльф", "Дварф", "Полурослик", "Гном",
+        "Полуэльф", "Полуорк", "Тифлинг", "Драконорождённый"
+    };
+        classField.choices = new System.Collections.Generic.List<string>
+    {
+        "Воин", "Волшебник", "Плут", "Жрец", "Друид",
+        "Бард", "Паладин", "Следопыт", "Монах",
+        "Варвар", "Чародей", "Колдун"
+    };
 
         isEditMode = false;
         editingCharacterId = null;
@@ -50,8 +60,8 @@ public class UICharacterForm : MonoBehaviour
         if (formTitle != null) formTitle.text = "Новый персонаж";
         if (nameField != null) nameField.value = "";
         if (levelField != null) levelField.value = 1;
-        if (raceField != null) raceField.value = "";
-        if (classField != null) classField.value = "";
+        if (raceField != null) raceField.index = -1;
+        if (classField != null) classField.index = -1;
         if (strField != null) strField.value = 10;
         if (dexField != null) dexField.value = 10;
         if (conField != null) conField.value = 10;
@@ -59,6 +69,7 @@ public class UICharacterForm : MonoBehaviour
         if (wisField != null) wisField.value = 10;
         if (chaField != null) chaField.value = 10;
         if (errorLabel != null) errorLabel.text = "";
+
         var saveBtn = root.Q<Button>("saveBtn");
         var cancelBtn = root.Q<Button>("cancelBtn");
         if (saveBtn != null) { saveBtn.clicked -= OnSaveClicked; saveBtn.clicked += OnSaveClicked; }
@@ -70,18 +81,18 @@ public class UICharacterForm : MonoBehaviour
         gameObject.SetActive(true);
         StartCoroutine(SetEditModeDelayed(character));
     }
-    
+
     private System.Collections.IEnumerator SetEditModeDelayed(CharacterData character)
     {
         yield return null;
-        
+
         root = GetComponent<UIDocument>().rootVisualElement;
-        
+
         var formTitle = root.Q<Label>("formTitle");
         var nameField = root.Q<TextField>("nameField");
         var levelField = root.Q<IntegerField>("levelField");
-        var raceField = root.Q<TextField>("raceField");
-        var classField = root.Q<TextField>("classField");
+        var raceField = root.Q<DropdownField>("raceField");
+        var classField = root.Q<DropdownField>("classField");
         var strField = root.Q<IntegerField>("strField");
         var dexField = root.Q<IntegerField>("dexField");
         var conField = root.Q<IntegerField>("conField");
@@ -89,6 +100,21 @@ public class UICharacterForm : MonoBehaviour
         var wisField = root.Q<IntegerField>("wisField");
         var chaField = root.Q<IntegerField>("chaField");
         var errorLabel = root.Q<Label>("errorLabel");
+
+        var races = new System.Collections.Generic.List<string>
+    {
+        "Человек", "Эльф", "Дварф", "Полурослик", "Гном",
+        "Полуэльф", "Полуорк", "Тифлинг", "Драконорождённый"
+    };
+        var classes = new System.Collections.Generic.List<string>
+    {
+        "Воин", "Волшебник", "Плут", "Жрец", "Друид",
+        "Бард", "Паладин", "Следопыт", "Монах",
+        "Варвар", "Чародей", "Колдун"
+    };
+
+        if (raceField != null) raceField.choices = races;
+        if (classField != null) classField.choices = classes;
 
         isEditMode = true;
         editingCharacterId = character.id;
@@ -105,6 +131,11 @@ public class UICharacterForm : MonoBehaviour
         if (wisField != null) wisField.value = character.wisdom;
         if (chaField != null) chaField.value = character.charisma;
         if (errorLabel != null) errorLabel.text = "";
+
+        var saveBtn = root.Q<Button>("saveBtn");
+        var cancelBtn = root.Q<Button>("cancelBtn");
+        if (saveBtn != null) { saveBtn.clicked -= OnSaveClicked; saveBtn.clicked += OnSaveClicked; }
+        if (cancelBtn != null) { cancelBtn.clicked -= OnCancelClicked; cancelBtn.clicked += OnCancelClicked; }
     }
 
     private void OnSaveClicked()
@@ -114,8 +145,8 @@ public class UICharacterForm : MonoBehaviour
         
         var nameField = root.Q<TextField>("nameField");
         var levelField = root.Q<IntegerField>("levelField");
-        var raceField = root.Q<TextField>("raceField");
-        var classField = root.Q<TextField>("classField");
+        var raceField = root.Q<DropdownField>("raceField");
+        var classField = root.Q<DropdownField>("classField");
         var strField = root.Q<IntegerField>("strField");
         var dexField = root.Q<IntegerField>("dexField");
         var conField = root.Q<IntegerField>("conField");
@@ -128,9 +159,9 @@ public class UICharacterForm : MonoBehaviour
 
         if (nameField == null || string.IsNullOrEmpty(nameField.value))
             errors += "• Имя обязательно для заполнения\n";
-        if (raceField == null || string.IsNullOrEmpty(raceField.value))
+        if (raceField == null || raceField.index < 0)
             errors += "• Раса обязательна для заполнения\n";
-        if (classField == null || string.IsNullOrEmpty(classField.value))
+        if (classField == null || classField.index < 0)
             errors += "• Класс обязателен для заполнения\n";
 
         int level = levelField != null ? levelField.value : 0;
@@ -158,8 +189,8 @@ public class UICharacterForm : MonoBehaviour
 
         character.name = nameField.value;
         character.level = level;
-        character.race = raceField.value;
-        character.characterClass = classField.value;
+        character.race = raceField != null ? raceField.value : "";
+        character.characterClass = classField != null ? classField.value : "";
         character.strength = strField != null ? strField.value : 10;
         character.dexterity = dexField != null ? dexField.value : 10;
         character.constitution = conField != null ? conField.value : 10;

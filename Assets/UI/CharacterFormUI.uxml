@@ -13,11 +13,11 @@
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Раса:" name="raceLabel" style="color: rgb(255, 255, 255); width: 100%;"/>
-                <ui:TextField label="" placeholder-text="filler text" name="raceField" style="color: rgb(0, 0, 0); width: 100%;"/>
+                <ui:DropdownField name="raceField" style="width: 100%;"/>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Класс:" name="classLabel" style="color: rgb(255, 255, 255); width: 100%;"/>
-                <ui:TextField label="" placeholder-text="filler text" name="classField" style="color: rgb(0, 0, 0); width: 100%;"/>
+                <ui:DropdownField name="classField" style="width: 100%;"/>
             </ui:VisualElement>
             <ui:VisualElement name="statsRow" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%;">
                 <ui:IntegerField label="Сила" value="42" name="strField" style="color: rgb(0, 0, 0);"/>

@@ -7,5 +7,14 @@
             <ui:Button text="Редактировать" name="editBtn"/>
             <ui:Button text="Удалить" name="deleteBtn"/>
         </ui:VisualElement>
+        <ui:VisualElement name="deleteDialog" style="position: absolute; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; display: none;">
+            <ui:VisualElement style="background-color: rgb(42, 42, 42); padding-top: 30px; padding-bottom: 30px; padding-left: 40px; padding-right: 40px; width: 400px;">
+                <ui:Label text="Удалить персонажа?" name="deleteDialogLabel" style="color: rgb(255,255,255); font-size: 18px; margin-bottom: 20px;"/>
+                <ui:VisualElement style="flex-direction: row; justify-content: flex-end;">
+                    <ui:Button text="Отмена" name="deleteCancelBtn" style="margin-right: 10px;"/>
+                    <ui:Button text="Удалить" name="deleteConfirmBtn" style="color: rgb(255, 80, 80);"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
