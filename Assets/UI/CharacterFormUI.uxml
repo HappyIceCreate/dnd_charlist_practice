@@ -1,37 +1,316 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/GlobalStyles.uss?fileID=7433441132597879392&amp;guid=fe2eba8684db6ba48b77e438178329e3&amp;type=3#GlobalStyles"/>
-    <ui:VisualElement name="rootContainer" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(26, 26, 26);">
-        <ui:VisualElement name="formCard" style="flex-grow: 1; width: 500px; background-color: rgb(42, 42, 42); padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
-            <ui:Label text="Новый персонаж" name="formTitle" style="font-size: 20px; color: rgb(255, 255, 255);"/>
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:Label text="Имя:" name="nameLabel" style="color: rgb(255, 255, 255); width: 100%;"/>
-                <ui:TextField label="" placeholder-text="filler text" name="nameField" style="color: rgb(0, 0, 0); width: 100%;"/>
+    <ui:ScrollView name="formScroll" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(61, 43, 31);">
+    <ui:VisualElement name="rootContainer" style="flex-grow: 1; width: 100%; padding: 20px;">
+
+        <!-- ===== ВЕРХНЯЯ СТРОКА: имя/раса/класс + уровень/опыт + КД + хиты ===== -->
+        <ui:VisualElement style="flex-direction: row; margin-bottom: 12px;">
+
+            <!-- Имя / Предыстория / Класс / Раса / Подкласс -->
+            <ui:VisualElement class="card" style="width: 320px; margin-right: 10px;">
+                <ui:TextField placeholder-text="Имя персонажа" name="nameField" style="margin-bottom: 6px; color: rgb(61,43,31);"/>
+                <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
+                    <ui:TextField placeholder-text="Предыстория" name="backgroundField" style="flex-grow: 1; margin-right: 4px; color: rgb(61,43,31);"/>
+                    <ui:DropdownField name="classField" style="flex-grow: 1; color: rgb(61,43,31);"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-direction: row;">
+                    <ui:DropdownField name="raceField" style="flex-grow: 1; margin-right: 4px; color: rgb(61,43,31);"/>
+                    <ui:TextField placeholder-text="Подкласс" name="subclassField" style="flex-grow: 1; color: rgb(61,43,31);"/>
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:Label text="Уровень (1-20):" name="levelLabel" style="color: rgb(255, 255, 255); width: 100%;"/>
-                <ui:IntegerField label="" value="42" name="levelField" style="color: rgb(0, 0, 0); width: 100%;"/>
+
+            <!-- Уровень / Опыт -->
+            <ui:VisualElement class="card" style="width: 90px; margin-right: 10px;">
+                <ui:Label text="уровень" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 2px;"/>
+                <ui:IntegerField value="1" name="levelField" style="margin-bottom: 8px;"/>
+                <ui:Label text="опыт" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 2px;"/>
+                <ui:IntegerField value="0" name="experienceField"/>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:Label text="Раса:" name="raceLabel" style="color: rgb(255, 255, 255); width: 100%;"/>
-                <ui:DropdownField name="raceField" style="width: 100%;"/>
+
+            <!-- КД -->
+            <ui:VisualElement class="card" style="width: 90px; margin-right: 10px; align-items: center; justify-content: center;">
+                <ui:Label text="КД" class="card-label" style="font-size: 14px; margin-bottom: 6px;"/>
+                <ui:IntegerField value="10" name="acField" style="width: 60px;"/>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1;">
-                <ui:Label text="Класс:" name="classLabel" style="color: rgb(255, 255, 255); width: 100%;"/>
-                <ui:DropdownField name="classField" style="width: 100%;"/>
+
+            <!-- Хиты -->
+            <ui:VisualElement class="card" style="width: 200px;">
+                <ui:Label text="хиты" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 6px;"/>
+                <ui:VisualElement style="flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; margin-right: 4px;">
+                        <ui:Label text="текущие" class="card-label" style="font-size: 9px; -unity-text-align: middle-left;"/>
+                        <ui:IntegerField value="0" name="hpCurrentField"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; margin-right: 4px;">
+                        <ui:Label text="врем." class="card-label" style="font-size: 9px; -unity-text-align: middle-left;"/>
+                        <ui:IntegerField value="0" name="hpTempField"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Label text="макс." class="card-label" style="font-size: 9px; -unity-text-align: middle-left;"/>
+                        <ui:IntegerField value="0" name="hpMaxField"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="statsRow" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%;">
-                <ui:IntegerField label="Сила" value="42" name="strField" style="color: rgb(0, 0, 0);"/>
-                <ui:IntegerField label="Ловкость" value="42" name="dexField" style="color: rgb(0, 0, 0);"/>
-                <ui:IntegerField label="Телосложение" value="42" name="conField" style="color: rgb(0, 0, 0);"/>
-                <ui:IntegerField label="Интелект" value="42" name="intField" style="color: rgb(0, 0, 0);"/>
-                <ui:IntegerField label="Мудрость" value="42" name="wisField" style="color: rgb(0, 0, 0);"/>
-                <ui:IntegerField label="Харизма" value="42" name="chaField" style="color: rgb(0, 0, 0);"/>
+
+        </ui:VisualElement>
+
+        <!-- ===== ВТОРАЯ ПОЛОСА: бонус владения / инициатива / скорость / пас.восприятие / черта / мод.з.характ ===== -->
+        <ui:VisualElement style="flex-direction: row; margin-bottom: 12px;">
+            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
+                <ui:Label text="б. владения" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
+                <ui:IntegerField value="2" name="profBonusField"/>
             </ui:VisualElement>
-            <ui:Label text="" name="errorLabel" style="color: rgb(255, 80, 80); white-space: normal; font-size: 14px;"/>
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: flex-end;">
-                <ui:Button text="Отмена" name="cancelBtn"/>
-                <ui:Button text="Сохранить" name="saveBtn"/>
+            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
+                <ui:Label text="инициатива" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
+                <ui:IntegerField value="0" name="initiativeField"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
+                <ui:Label text="скорость" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
+                <ui:IntegerField value="30" name="speedField"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
+                <ui:Label text="пас. восприятие" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
+                <ui:IntegerField value="10" name="passivePerceptionField"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
+                <ui:Label text="черта" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
+                <ui:TextField name="traitField"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="card" style="flex-grow: 1;">
+                <ui:Label text="мод. з. характ" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
+                <ui:TextField name="spellModField"/>
             </ui:VisualElement>
         </ui:VisualElement>
+
+        <!-- ===== ОСНОВНАЯ СЕКЦИЯ: характеристики (слева) + оружие/заклинания/снаряжение (справа) ===== -->
+        <ui:VisualElement style="flex-direction: row;">
+
+            <!-- Левая колонка: 6 характеристик в 2 ряда по 3 -->
+            <ui:VisualElement style="width: 460px; margin-right: 12px;">
+
+                <ui:VisualElement style="flex-direction: row; margin-bottom: 8px;">
+                    <!-- СИЛА -->
+                    <ui:VisualElement class="stat-block" name="strBlock" style="flex-grow: 1; margin-right: 8px;">
+                        <ui:Label text="сила" class="stat-name"/>
+                        <ui:VisualElement class="stat-top-row">
+                            <ui:VisualElement class="stat-modifier-box">
+                                <ui:Label text="+0" name="strModifier" class="stat-modifier-text"/>
+                            </ui:VisualElement>
+                            <ui:IntegerField value="10" name="strField" class="stat-value-box"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="strSaveProf"/>
+                            <ui:Label text="0" name="strSaveValue" class="skill-value"/>
+                            <ui:Label text="спасбросок" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="athleticsProf"/>
+                            <ui:Label text="0" name="athleticsValue" class="skill-value"/>
+                            <ui:Label text="атлетика" class="skill-label"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- ТЕЛОСЛОЖЕНИЕ -->
+                    <ui:VisualElement class="stat-block" name="conBlock" style="flex-grow: 1; margin-right: 8px;">
+                        <ui:Label text="телосложение" class="stat-name"/>
+                        <ui:VisualElement class="stat-top-row">
+                            <ui:VisualElement class="stat-modifier-box">
+                                <ui:Label text="+0" name="conModifier" class="stat-modifier-text"/>
+                            </ui:VisualElement>
+                            <ui:IntegerField value="10" name="conField" class="stat-value-box"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="conSaveProf"/>
+                            <ui:Label text="0" name="conSaveValue" class="skill-value"/>
+                            <ui:Label text="спасбросок" class="skill-label"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- ЛОВКОСТЬ -->
+                    <ui:VisualElement class="stat-block" name="dexBlock" style="flex-grow: 1;">
+                        <ui:Label text="ловкость" class="stat-name"/>
+                        <ui:VisualElement class="stat-top-row">
+                            <ui:VisualElement class="stat-modifier-box">
+                                <ui:Label text="+0" name="dexModifier" class="stat-modifier-text"/>
+                            </ui:VisualElement>
+                            <ui:IntegerField value="10" name="dexField" class="stat-value-box"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="dexSaveProf"/>
+                            <ui:Label text="0" name="dexSaveValue" class="skill-value"/>
+                            <ui:Label text="спасбросок" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="acrobaticsProf"/>
+                            <ui:Label text="0" name="acrobaticsValue" class="skill-value"/>
+                            <ui:Label text="акробатика" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="sleightOfHandProf"/>
+                            <ui:Label text="0" name="sleightOfHandValue" class="skill-value"/>
+                            <ui:Label text="ловкость рук" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="stealthProf"/>
+                            <ui:Label text="0" name="stealthValue" class="skill-value"/>
+                            <ui:Label text="скрытность" class="skill-label"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement style="flex-direction: row;">
+                    <!-- МУДРОСТЬ -->
+                    <ui:VisualElement class="stat-block" name="wisBlock" style="flex-grow: 1; margin-right: 8px;">
+                        <ui:Label text="мудрость" class="stat-name"/>
+                        <ui:VisualElement class="stat-top-row">
+                            <ui:VisualElement class="stat-modifier-box">
+                                <ui:Label text="+0" name="wisModifier" class="stat-modifier-text"/>
+                            </ui:VisualElement>
+                            <ui:IntegerField value="10" name="wisField" class="stat-value-box"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="wisSaveProf"/>
+                            <ui:Label text="0" name="wisSaveValue" class="skill-value"/>
+                            <ui:Label text="спасбросок" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="perceptionProf"/>
+                            <ui:Label text="0" name="perceptionValue" class="skill-value"/>
+                            <ui:Label text="восприятие" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="survivalProf"/>
+                            <ui:Label text="0" name="survivalValue" class="skill-value"/>
+                            <ui:Label text="выживание" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="medicineProf"/>
+                            <ui:Label text="0" name="medicineValue" class="skill-value"/>
+                            <ui:Label text="медицина" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="insightProf"/>
+                            <ui:Label text="0" name="insightValue" class="skill-value"/>
+                            <ui:Label text="проницательность" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="animalHandlingProf"/>
+                            <ui:Label text="0" name="animalHandlingValue" class="skill-value"/>
+                            <ui:Label text="уход за животными" class="skill-label"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- ИНТЕЛЛЕКТ -->
+                    <ui:VisualElement class="stat-block" name="intBlock" style="flex-grow: 1; margin-right: 8px;">
+                        <ui:Label text="интеллект" class="stat-name"/>
+                        <ui:VisualElement class="stat-top-row">
+                            <ui:VisualElement class="stat-modifier-box">
+                                <ui:Label text="+0" name="intModifier" class="stat-modifier-text"/>
+                            </ui:VisualElement>
+                            <ui:IntegerField value="10" name="intField" class="stat-value-box"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="intSaveProf"/>
+                            <ui:Label text="0" name="intSaveValue" class="skill-value"/>
+                            <ui:Label text="спасбросок" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="analysisProf"/>
+                            <ui:Label text="0" name="analysisValue" class="skill-value"/>
+                            <ui:Label text="анализ" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="historyProf"/>
+                            <ui:Label text="0" name="historyValue" class="skill-value"/>
+                            <ui:Label text="история" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="magicProf"/>
+                            <ui:Label text="0" name="magicValue" class="skill-value"/>
+                            <ui:Label text="магия" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="natureProf"/>
+                            <ui:Label text="0" name="natureValue" class="skill-value"/>
+                            <ui:Label text="природа" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="religionProf"/>
+                            <ui:Label text="0" name="religionValue" class="skill-value"/>
+                            <ui:Label text="религия" class="skill-label"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- ХАРИЗМА -->
+                    <ui:VisualElement class="stat-block" name="chaBlock" style="flex-grow: 1;">
+                        <ui:Label text="харизма" class="stat-name"/>
+                        <ui:VisualElement class="stat-top-row">
+                            <ui:VisualElement class="stat-modifier-box">
+                                <ui:Label text="+0" name="chaModifier" class="stat-modifier-text"/>
+                            </ui:VisualElement>
+                            <ui:IntegerField value="10" name="chaField" class="stat-value-box"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="chaSaveProf"/>
+                            <ui:Label text="0" name="chaSaveValue" class="skill-value"/>
+                            <ui:Label text="спасбросок" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="performanceProf"/>
+                            <ui:Label text="0" name="performanceValue" class="skill-value"/>
+                            <ui:Label text="выступление" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="intimidationProf"/>
+                            <ui:Label text="0" name="intimidationValue" class="skill-value"/>
+                            <ui:Label text="запугивание" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="deceptionProf"/>
+                            <ui:Label text="0" name="deceptionValue" class="skill-value"/>
+                            <ui:Label text="обман" class="skill-label"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="skill-row">
+                            <ui:Toggle name="persuasionProf"/>
+                            <ui:Label text="0" name="persuasionValue" class="skill-value"/>
+                            <ui:Label text="убеждение" class="skill-label"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+
+            <!-- Правая колонка: оружие / снаряжение / заклинания -->
+            <ui:VisualElement style="flex-grow: 1;">
+
+                <ui:VisualElement class="card" style="margin-bottom: 8px;">
+                    <ui:Label text="оружие" class="card-label" style="font-size: 14px; -unity-text-align: middle-left; margin-bottom: 6px;"/>
+                    <ui:TextField name="weaponsField" multiline="true" style="height: 100px; color: rgb(61,43,31);"/>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="card" style="margin-bottom: 8px;">
+                    <ui:Label text="снаряжение" class="card-label" style="font-size: 14px; -unity-text-align: middle-left; margin-bottom: 6px;"/>
+                    <ui:TextField name="equipmentField" multiline="true" style="height: 80px; color: rgb(61,43,31);"/>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="card">
+                    <ui:Label text="заклинания" class="card-label" style="font-size: 14px; -unity-text-align: middle-left; margin-bottom: 6px;"/>
+                    <ui:TextField name="spellsField" multiline="true" style="height: 140px; color: rgb(61,43,31);"/>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+        <!-- Ошибки валидации -->
+        <ui:Label text="" name="errorLabel" style="color: rgb(255, 120, 120); white-space: normal; margin-top: 12px; font-size: 13px;"/>
+
+        <!-- Кнопки сохранить/отмена -->
+        <ui:VisualElement style="flex-direction: row; justify-content: flex-end; margin-top: 12px; margin-bottom: 20px;">
+            <ui:Button text="Отмена" name="cancelBtn" style="margin-right: 10px; padding-left: 20px; padding-right: 20px;"/>
+            <ui:Button text="Сохранить" name="saveBtn" style="background-color: rgb(201, 179, 117); color: rgb(61,43,31); -unity-font-style: bold; padding-left: 20px; padding-right: 20px;"/>
+        </ui:VisualElement>
+
     </ui:VisualElement>
+    </ui:ScrollView>
 </ui:UXML>

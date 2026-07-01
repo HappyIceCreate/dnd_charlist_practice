@@ -1,3 +1,86 @@
 Label {
-    color: rgb(255, 255, 255);
+    color: rgb(224, 224, 224);
+    -unity-font-style: normal;
+}
+
+/* ===== Цветовая схема макета ===== */
+/* Фон: тёмно-коричневый #3D2B1F
+   Карточки: охра/бежевый #C9B375
+   Текст на карточках: тёмно-коричневый #3D2B1F */
+
+.card {
+    background-color: rgb(201, 179, 117);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.card-label {
+    color: rgb(61, 43, 31);
+    font-size: 12px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.stat-block {
+    background-color: rgb(201, 179, 117);
+    border-radius: 8px;
+    padding: 8px;
+    margin: 4px;
+}
+
+.stat-name {
+    color: rgb(61, 43, 31);
+    font-size: 13px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    margin-bottom: 4px;
+}
+
+.stat-top-row {
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+.stat-modifier-box {
+    background-color: rgb(177, 153, 96);
+    border-radius: 6px;
+    width: 50px;
+    height: 36px;
+    margin-right: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-value-box {
+    background-color: rgb(177, 153, 96);
+    border-radius: 6px;
+    width: 40px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-modifier-text {
+    color: rgb(61, 43, 31);
+    font-size: 18px;
+    -unity-font-style: bold;
+}
+
+.skill-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.skill-label {
+    color: rgb(61, 43, 31);
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+.skill-value {
+    color: rgb(61, 43, 31);
+    font-size: 11px;
+    width: 18px;
+    -unity-text-align: middle-center;
 }

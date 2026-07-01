@@ -1,20 +1,35 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="rootContainer" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(26, 26, 26);">
-        <ui:Label text="Управление персонажами D&amp;D" name="titleLabel" style="font-size: 24px; color: rgb(255, 255, 255);"/>
-        <ui:ListView name="characterList" style="width: 100%; height: 300px; color: rgb(255, 255, 255);"/>
-        <ui:VisualElement name="buttonContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%;">
-            <ui:Button text="Создать" name="createBtn"/>
-            <ui:Button text="Редактировать" name="editBtn"/>
-            <ui:Button text="Удалить" name="deleteBtn"/>
+    <Style src="project://database/Assets/UI/GlobalStyles.uss?fileID=7433441132597879392&amp;guid=fe2eba8684db6ba48b77e438178329e3&amp;type=3#GlobalStyles"/>
+    <ui:VisualElement name="rootContainer" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgb(61, 43, 31);">
+
+        <!-- Заголовок -->
+        <ui:Label text="D&amp;D character maker" style="position: absolute; top: 24px; left: 24px; color: rgb(224, 204, 160); font-size: 26px; -unity-font-style: bold;"/>
+
+        <!-- Список персонажей -->
+        <ui:ListView name="characterList" style="position: absolute; top: 80px; left: 24px; width: 380px; bottom: 100px;"/>
+
+        <!-- Кнопки -->
+        <ui:VisualElement style="position: absolute; bottom: 24px; left: 24px; flex-direction: row;">
+            <ui:Button text="+" name="createBtn" style="width: 60px; height: 60px; border-radius: 30px; background-color: rgb(201, 179, 117); color: rgb(61, 43, 31); font-size: 28px; -unity-font-style: bold; margin-right: 10px; border-width: 0; padding: 0;"/>
+            <ui:Button text="-" name="deleteBtn" style="width: 60px; height: 60px; border-radius: 30px; background-color: rgb(201, 179, 117); color: rgb(61, 43, 31); font-size: 28px; -unity-font-style: bold; margin-right: 10px; border-width: 0; padding: 0;"/>
+            <ui:Button text="✎" name="editBtn" style="width: 60px; height: 60px; border-radius: 30px; background-color: rgb(201, 179, 117); color: rgb(61, 43, 31); font-size: 22px; -unity-font-style: bold; border-width: 0; padding: 0;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="deleteDialog" style="position: absolute; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; display: none;">
-            <ui:VisualElement style="background-color: rgb(42, 42, 42); padding-top: 30px; padding-bottom: 30px; padding-left: 40px; padding-right: 40px; width: 400px;">
-                <ui:Label text="Удалить персонажа?" name="deleteDialogLabel" style="color: rgb(255,255,255); font-size: 18px; margin-bottom: 20px;"/>
+
+        <!-- Иллюстрация справа -->
+        <ui:VisualElement name="heroArt" style="position: absolute; top: 0; left: 440px; right: 0; bottom: 0; align-items: center; justify-content: center;">
+            <ui:VisualElement style="width: 500px; height: 500px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/heroes.png');"/>
+        </ui:VisualElement>
+
+        <!-- Диалог удаления -->
+        <ui:VisualElement name="deleteDialog" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; display: none;">
+            <ui:VisualElement style="background-color: rgb(201, 179, 117); border-radius: 10px; padding-top: 30px; padding-bottom: 30px; padding-left: 40px; padding-right: 40px; width: 400px;">
+                <ui:Label text="Удалить персонажа?" name="deleteDialogLabel" style="color: rgb(61, 43, 31); font-size: 18px; -unity-font-style: bold; margin-bottom: 20px; white-space: normal;"/>
                 <ui:VisualElement style="flex-direction: row; justify-content: flex-end;">
                     <ui:Button text="Отмена" name="deleteCancelBtn" style="margin-right: 10px;"/>
-                    <ui:Button text="Удалить" name="deleteConfirmBtn" style="color: rgb(255, 80, 80);"/>
+                    <ui:Button text="Удалить" name="deleteConfirmBtn" style="color: rgb(180, 50, 50); -unity-font-style: bold;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
+
     </ui:VisualElement>
 </ui:UXML>
