@@ -57,6 +57,14 @@ public class UIMainMenu : MonoBehaviour
             formScript = characterForm.GetComponent<UICharacterForm>();
 
         RefreshList();
+        // Назначаем логотип
+        var titleLogo = root.Q<VisualElement>("titleLogo");
+        if (titleLogo != null)
+        {
+            var texture = Resources.Load<Texture2D>("UI/title_logo");
+            if (texture != null)
+                titleLogo.style.backgroundImage = new StyleBackground(texture);
+        }
     }
 
     public void RefreshList()

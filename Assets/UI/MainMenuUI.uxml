@@ -2,22 +2,29 @@
     <Style src="project://database/Assets/UI/GlobalStyles.uss?fileID=7433441132597879392&amp;guid=fe2eba8684db6ba48b77e438178329e3&amp;type=3#GlobalStyles"/>
     <ui:VisualElement name="rootContainer" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgb(61, 43, 31);">
 
-        <!-- Заголовок -->
-        <ui:Label text="D&amp;D character maker" style="position: absolute; top: 24px; left: 24px; color: rgb(224, 204, 160); font-size: 26px; -unity-font-style: bold;"/>
+        <!-- Заголовок с картинкой -->
+        <ui:VisualElement style="position: absolute; top: 0; left: 0; right: 0; height: 80px; -unity-background-scale-mode: stretch-to-fill; background-image: url('project://database/Assets/UI/bg_header.png');"/>
+        <ui:VisualElement name="titleLogo" style="position: absolute; top: 12px; left: 24px; width: 600px; height: 60px; -unity-background-scale-mode: scale-to-fit;"/>
 
         <!-- Список персонажей -->
         <ui:ListView name="characterList" style="position: absolute; top: 80px; left: 24px; width: 380px; bottom: 100px;"/>
 
-        <!-- Кнопки -->
+        <!-- Кнопки с иконками -->
         <ui:VisualElement style="position: absolute; bottom: 24px; left: 24px; flex-direction: row;">
-            <ui:Button text="+" name="createBtn" style="width: 60px; height: 60px; border-radius: 30px; background-color: rgb(201, 179, 117); color: rgb(61, 43, 31); font-size: 28px; -unity-font-style: bold; margin-right: 10px; border-width: 0; padding: 0;"/>
-            <ui:Button text="-" name="deleteBtn" style="width: 60px; height: 60px; border-radius: 30px; background-color: rgb(201, 179, 117); color: rgb(61, 43, 31); font-size: 28px; -unity-font-style: bold; margin-right: 10px; border-width: 0; padding: 0;"/>
-            <ui:Button text="✎" name="editBtn" style="width: 60px; height: 60px; border-radius: 30px; background-color: rgb(201, 179, 117); color: rgb(61, 43, 31); font-size: 22px; -unity-font-style: bold; border-width: 0; padding: 0;"/>
+            <ui:Button name="createBtn" style="width: 64px; height: 64px; border-radius: 50px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; margin-right: 10px; align-items: center; justify-content: center;">
+                <ui:VisualElement style="width: 36px; height: 36px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_plus.png');"/>
+            </ui:Button>
+            <ui:Button name="deleteBtn" style="width: 64px; height: 64px; border-radius: 8px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; margin-right: 10px; align-items: center; justify-content: center;">
+                <ui:VisualElement style="width: 36px; height: 36px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_minus.png');"/>
+            </ui:Button>
+            <ui:Button name="editBtn" style="width: 64px; height: 64px; border-radius: 20px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; align-items: center; justify-content: center;">
+                <ui:VisualElement style="width: 36px; height: 36px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_edit.png');"/>
+            </ui:Button>
         </ui:VisualElement>
 
         <!-- Иллюстрация справа -->
-        <ui:VisualElement name="heroArt" style="position: absolute; top: 0; left: 440px; right: 0; bottom: 0; align-items: center; justify-content: center;">
-            <ui:VisualElement style="width: 500px; height: 500px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/heroes.png');"/>
+        <ui:VisualElement style="position: absolute; top: 0; left: 440px; right: 0; bottom: 0; align-items: center; justify-content: center;">
+            <ui:VisualElement style="width: 700px; height: 700px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/heroes.png');"/>
         </ui:VisualElement>
 
         <!-- Диалог удаления -->
