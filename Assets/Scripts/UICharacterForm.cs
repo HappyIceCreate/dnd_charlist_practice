@@ -66,7 +66,52 @@ public class UICharacterForm : MonoBehaviour
 
         ClearError();
         RecalculateAll();
+        ApplyBackgrounds();
         SubscribeEvents();
+    }
+
+    private void ApplyBackgrounds()
+    {
+        SetBlockBg("headerBlock", "form_bg_header", false);
+        SetBlockBg("levelBlock", "form_bg_level", false);
+        SetBlockBg("acBlock", "form_bg_ac", false);
+        SetBlockBg("hpBlock", "form_bg_hp", false);
+
+        // Вторая полоса
+        SetBlockBg("profBonusField", "form_bg_second_row", true);
+
+        // Блоки характеристик
+        SetBlockBg("strBlock", "form_bg_stat_short", false);
+        SetBlockBg("conBlock", "form_bg_stat_short", false);
+        SetBlockBg("dexBlock", "form_bg_stat_tall", false);
+        SetBlockBg("wisBlock", "form_bg_stat_tall", false);
+        SetBlockBg("intBlock", "form_bg_stat_tall", false);
+        SetBlockBg("chaBlock", "form_bg_stat_tall", false);
+
+        // Правая колонка
+        SetBlockBg("weaponsField", "form_bg_weapons", true);
+        SetBlockBg("equipmentField", "form_bg_equipment", true);
+        SetBlockBg("spellsField", "form_bg_spells", true);
+    }
+
+    private void SetBlockBg(string elementName, string textureName, bool searchParent)
+    {
+        var el = root.Q<VisualElement>(elementName);
+        if (el == null) { Debug.LogWarning($"Элемент не найден: {elementName}"); return; }
+
+        var target = searchParent && el.parent != null ? el.parent : el;
+
+        var tex = Resources.Load<Texture2D>("UI/" + textureName);
+        if (tex != null)
+        {
+            target.style.backgroundImage = new StyleBackground(tex);
+            target.style.unityBackgroundScaleMode = ScaleMode.StretchToFill;
+            target.style.backgroundColor = StyleKeyword.None;
+        }
+        else
+        {
+            Debug.LogWarning($"Текстура не найдена: UI/{textureName}");
+        }
     }
 
     private void FillEmptyForm()

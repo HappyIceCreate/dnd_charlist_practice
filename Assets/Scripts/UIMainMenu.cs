@@ -77,9 +77,27 @@ public class UIMainMenu : MonoBehaviour
 
         characterList.makeItem = () =>
         {
-            // Карточка персонажа в списке
+            // Внешний контейнер с отступом — прозрачный
+            var container = new VisualElement();
+            container.style.paddingTop = 4;
+            container.style.paddingBottom = 4;
+            container.style.paddingLeft = 4;
+            container.style.paddingRight = 4;
+            container.style.backgroundColor = new Color(0, 0, 0, 0);
+
+            // Внутренняя карточка с фоном
             var card = new VisualElement();
-            card.style.backgroundColor = new Color(0.72f, 0.63f, 0.39f, 1f); // #C9B375
+            card.name = "card";
+            var cardBg = Resources.Load<Texture2D>("UI/card_character");
+            if (cardBg != null)
+            {
+                card.style.backgroundImage = new StyleBackground(cardBg);
+                card.style.unityBackgroundScaleMode = ScaleMode.StretchToFill;
+            }
+            else
+            {
+                card.style.backgroundColor = new Color(0.72f, 0.63f, 0.39f, 1f);
+            }
             card.style.borderTopLeftRadius = 8;
             card.style.borderTopRightRadius = 8;
             card.style.borderBottomLeftRadius = 8;
@@ -88,16 +106,11 @@ public class UIMainMenu : MonoBehaviour
             card.style.paddingBottom = 8;
             card.style.paddingLeft = 12;
             card.style.paddingRight = 12;
-            card.style.marginBottom = 0;
-            card.style.marginTop = 0;
-            card.style.borderBottomWidth = 2;
-            card.style.borderBottomColor = new Color(0.24f, 0.17f, 0.12f, 0.3f);
-            card.style.marginLeft = 4;
-            card.style.marginRight = 4;
+            card.style.flexGrow = 1;
 
             var nameLabel = new Label();
             nameLabel.name = "cardName";
-            nameLabel.style.color = new Color(0.24f, 0.17f, 0.12f, 1f); // #3D2B1F
+            nameLabel.style.color = new Color(0.24f, 0.17f, 0.12f, 1f);
             nameLabel.style.fontSize = 16;
             nameLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
             card.Add(nameLabel);
@@ -120,22 +133,23 @@ public class UIMainMenu : MonoBehaviour
             detailsRow.Add(classLabel);
 
             card.Add(detailsRow);
-            return card;
+            container.Add(card);
+            return container;
         };
 
         characterList.bindItem = (element, index) =>
         {
             var character = characters[index];
-            var nameLabel  = element.Q<Label>("cardName");
-            var raceLabel  = element.Q<Label>("cardRace");
+            var nameLabel = element.Q<Label>("cardName");
+            var raceLabel = element.Q<Label>("cardRace");
             var classLabel = element.Q<Label>("cardClass");
 
-            if (nameLabel  != null) nameLabel.text  = character.name + "  (ур. " + character.level + ")";
-            if (raceLabel  != null) raceLabel.text  = character.race;
+            if (nameLabel != null) nameLabel.text = character.name + "  (ур. " + character.level + ")";
+            if (raceLabel != null) raceLabel.text = character.race;
             if (classLabel != null) classLabel.text = character.characterClass;
         };
 
-        characterList.fixedItemHeight = 72;
+        characterList.fixedItemHeight = 84;
         characterList.style.paddingTop = 4;
         characterList.style.paddingBottom = 4;
         characterList.RefreshItems();

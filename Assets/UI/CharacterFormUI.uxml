@@ -7,7 +7,8 @@
         <ui:VisualElement style="flex-direction: row; margin-bottom: 12px;">
 
             <!-- Имя / Предыстория / Класс / Раса / Подкласс -->
-            <ui:VisualElement class="card" style="width: 320px; margin-right: 10px;">
+            <!-- Верхний левый блок -->
+            <ui:VisualElement name="headerBlock" class="card" style="width: 320px; margin-right: 10px;">
                 <ui:TextField placeholder-text="Имя персонажа" name="nameField" style="margin-bottom: 6px; color: rgb(61,43,31);"/>
                 <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
                     <ui:TextField placeholder-text="Предыстория" name="backgroundField" style="flex-grow: 1; margin-right: 4px; color: rgb(61,43,31);"/>
@@ -19,8 +20,8 @@
                 </ui:VisualElement>
             </ui:VisualElement>
 
-            <!-- Уровень / Опыт -->
-            <ui:VisualElement class="card" style="width: 90px; margin-right: 10px;">
+            <!-- Уровень/Опыт -->
+            <ui:VisualElement name="levelBlock" class="card" style="width: 90px; margin-right: 10px;">
                 <ui:Label text="уровень" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 2px;"/>
                 <ui:IntegerField value="1" name="levelField" style="margin-bottom: 8px;"/>
                 <ui:Label text="опыт" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 2px;"/>
@@ -28,13 +29,13 @@
             </ui:VisualElement>
 
             <!-- КД -->
-            <ui:VisualElement class="card" style="width: 90px; margin-right: 10px; align-items: center; justify-content: center;">
+            <ui:VisualElement name="acBlock" class="card" style="width: 90px; margin-right: 10px;">
                 <ui:Label text="КД" class="card-label" style="font-size: 14px; margin-bottom: 6px;"/>
                 <ui:IntegerField value="10" name="acField" style="width: 60px;"/>
             </ui:VisualElement>
 
             <!-- Хиты -->
-            <ui:VisualElement class="card" style="width: 200px;">
+            <ui:VisualElement name="hpBlock" class="card" style="width: 200px;">
                 <ui:Label text="хиты" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 6px;"/>
                 <ui:VisualElement style="flex-direction: row;">
                     <ui:VisualElement style="flex-grow: 1; margin-right: 4px;">

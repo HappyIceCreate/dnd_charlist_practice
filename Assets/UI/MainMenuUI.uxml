@@ -7,18 +7,18 @@
         <ui:VisualElement name="titleLogo" style="position: absolute; top: 12px; left: 24px; width: 600px; height: 60px; -unity-background-scale-mode: scale-to-fit;"/>
 
         <!-- Список персонажей -->
-        <ui:ListView name="characterList" style="position: absolute; top: 80px; left: 24px; width: 380px; bottom: 100px;"/>
+        <ui:ListView name="characterList" style="position: absolute; top: 100px; left: 24px; width: 380px; bottom: 100px;"/>
 
         <!-- Кнопки с иконками -->
         <ui:VisualElement style="position: absolute; bottom: 24px; left: 24px; flex-direction: row;">
-            <ui:Button name="createBtn" style="width: 64px; height: 64px; border-radius: 50px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; margin-right: 10px; align-items: center; justify-content: center;">
-                <ui:VisualElement style="width: 36px; height: 36px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_plus.png');"/>
+            <ui:Button name="createBtn" style="width: 150px; height: 150px; border-radius: 80px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; margin-right: 10px; align-items: center; justify-content: center;">
+                <ui:VisualElement style="width: 72px; height: 72px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_plus.png');"/>
             </ui:Button>
-            <ui:Button name="deleteBtn" style="width: 64px; height: 64px; border-radius: 8px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; margin-right: 10px; align-items: center; justify-content: center;">
-                <ui:VisualElement style="width: 36px; height: 36px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_minus.png');"/>
+            <ui:Button name="deleteBtn" style="width: 150px; height: 150px; border-radius: 16px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; margin-right: 10px; align-items: center; justify-content: center;">
+                <ui:VisualElement style="width: 72px; height: 72px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_minus.png');"/>
             </ui:Button>
-            <ui:Button name="editBtn" style="width: 64px; height: 64px; border-radius: 20px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; align-items: center; justify-content: center;">
-                <ui:VisualElement style="width: 36px; height: 36px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_edit.png');"/>
+            <ui:Button name="editBtn" style="width: 150px; height: 150px; border-radius: 40px; background-color: rgb(201, 179, 117); border-width: 0; padding: 0; align-items: center; justify-content: center;">
+                <ui:VisualElement style="width: 72px; height: 72px; -unity-background-scale-mode: scale-to-fit; background-image: url('project://database/Assets/UI/icon_edit.png');"/>
             </ui:Button>
         </ui:VisualElement>
 
