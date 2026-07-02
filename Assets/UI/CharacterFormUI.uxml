@@ -3,12 +3,9 @@
     <ui:ScrollView name="formScroll" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(61, 43, 31);">
     <ui:VisualElement name="rootContainer" style="flex-grow: 1; width: 100%; padding: 20px;">
 
-        <!-- ===== ВЕРХНЯЯ СТРОКА: имя/раса/класс + уровень/опыт + КД + хиты ===== -->
         <ui:VisualElement style="flex-direction: row; margin-bottom: 12px;">
 
-            <!-- Имя / Предыстория / Класс / Раса / Подкласс -->
-            <!-- Верхний левый блок -->
-            <ui:VisualElement name="headerBlock" class="card" style="width: 320px; margin-right: 10px;">
+            <ui:VisualElement class="card" style="width: 320px; margin-right: 10px;">
                 <ui:TextField placeholder-text="Имя персонажа" name="nameField" style="margin-bottom: 6px; color: rgb(61,43,31);"/>
                 <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
                     <ui:TextField placeholder-text="Предыстория" name="backgroundField" style="flex-grow: 1; margin-right: 4px; color: rgb(61,43,31);"/>
@@ -20,42 +17,20 @@
                 </ui:VisualElement>
             </ui:VisualElement>
 
-            <!-- Уровень/Опыт -->
-            <ui:VisualElement name="levelBlock" class="card" style="width: 90px; margin-right: 10px;">
+            <ui:VisualElement class="card" style="width: 90px; margin-right: 10px;">
                 <ui:Label text="уровень" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 2px;"/>
                 <ui:IntegerField value="1" name="levelField" style="margin-bottom: 8px;"/>
                 <ui:Label text="опыт" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 2px;"/>
                 <ui:IntegerField value="0" name="experienceField"/>
             </ui:VisualElement>
 
-            <!-- КД -->
-            <ui:VisualElement name="acBlock" class="card" style="width: 90px; margin-right: 10px;">
+            <ui:VisualElement class="card" style="width: 120px; align-items: center; justify-content: center;">
                 <ui:Label text="КД" class="card-label" style="font-size: 14px; margin-bottom: 6px;"/>
-                <ui:IntegerField value="10" name="acField" style="width: 60px;"/>
-            </ui:VisualElement>
-
-            <!-- Хиты -->
-            <ui:VisualElement name="hpBlock" class="card" style="width: 200px;">
-                <ui:Label text="хиты" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 6px;"/>
-                <ui:VisualElement style="flex-direction: row;">
-                    <ui:VisualElement style="flex-grow: 1; margin-right: 4px;">
-                        <ui:Label text="текущие" class="card-label" style="font-size: 9px; -unity-text-align: middle-left;"/>
-                        <ui:IntegerField value="0" name="hpCurrentField"/>
-                    </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1; margin-right: 4px;">
-                        <ui:Label text="врем." class="card-label" style="font-size: 9px; -unity-text-align: middle-left;"/>
-                        <ui:IntegerField value="0" name="hpTempField"/>
-                    </ui:VisualElement>
-                    <ui:VisualElement style="flex-grow: 1;">
-                        <ui:Label text="макс." class="card-label" style="font-size: 9px; -unity-text-align: middle-left;"/>
-                        <ui:IntegerField value="0" name="hpMaxField"/>
-                    </ui:VisualElement>
-                </ui:VisualElement>
+                <ui:IntegerField value="10" name="acField" style="width: 70px;"/>
             </ui:VisualElement>
 
         </ui:VisualElement>
 
-        <!-- ===== ВТОРАЯ ПОЛОСА: бонус владения / инициатива / скорость / пас.восприятие / черта / мод.з.характ ===== -->
         <ui:VisualElement style="flex-direction: row; margin-bottom: 12px;">
             <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
                 <ui:Label text="б. владения" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
@@ -65,32 +40,18 @@
                 <ui:Label text="инициатива" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
                 <ui:IntegerField value="0" name="initiativeField"/>
             </ui:VisualElement>
-            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
+            <ui:VisualElement class="card" style="flex-grow: 1;">
                 <ui:Label text="скорость" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
                 <ui:IntegerField value="30" name="speedField"/>
             </ui:VisualElement>
-            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
-                <ui:Label text="пас. восприятие" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
-                <ui:IntegerField value="10" name="passivePerceptionField"/>
-            </ui:VisualElement>
-            <ui:VisualElement class="card" style="flex-grow: 1; margin-right: 8px;">
-                <ui:Label text="черта" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
-                <ui:TextField name="traitField"/>
-            </ui:VisualElement>
-            <ui:VisualElement class="card" style="flex-grow: 1;">
-                <ui:Label text="мод. з. характ" class="card-label" style="-unity-text-align: middle-left; margin-bottom: 4px;"/>
-                <ui:TextField name="spellModField"/>
-            </ui:VisualElement>
         </ui:VisualElement>
 
-        <!-- ===== ОСНОВНАЯ СЕКЦИЯ: характеристики (слева) + оружие/заклинания/снаряжение (справа) ===== -->
         <ui:VisualElement style="flex-direction: row;">
 
-            <!-- Левая колонка: 6 характеристик в 2 ряда по 3 -->
             <ui:VisualElement style="width: 460px; margin-right: 12px;">
 
                 <ui:VisualElement style="flex-direction: row; margin-bottom: 8px;">
-                    <!-- СИЛА -->
+                    
                     <ui:VisualElement class="stat-block" name="strBlock" style="flex-grow: 1; margin-right: 8px;">
                         <ui:Label text="сила" class="stat-name"/>
                         <ui:VisualElement class="stat-top-row">
@@ -111,7 +72,6 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
 
-                    <!-- ТЕЛОСЛОЖЕНИЕ -->
                     <ui:VisualElement class="stat-block" name="conBlock" style="flex-grow: 1; margin-right: 8px;">
                         <ui:Label text="телосложение" class="stat-name"/>
                         <ui:VisualElement class="stat-top-row">
@@ -127,7 +87,6 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
 
-                    <!-- ЛОВКОСТЬ -->
                     <ui:VisualElement class="stat-block" name="dexBlock" style="flex-grow: 1;">
                         <ui:Label text="ловкость" class="stat-name"/>
                         <ui:VisualElement class="stat-top-row">
@@ -160,7 +119,7 @@
                 </ui:VisualElement>
 
                 <ui:VisualElement style="flex-direction: row;">
-                    <!-- МУДРОСТЬ -->
+                    
                     <ui:VisualElement class="stat-block" name="wisBlock" style="flex-grow: 1; margin-right: 8px;">
                         <ui:Label text="мудрость" class="stat-name"/>
                         <ui:VisualElement class="stat-top-row">
@@ -201,7 +160,6 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
 
-                    <!-- ИНТЕЛЛЕКТ -->
                     <ui:VisualElement class="stat-block" name="intBlock" style="flex-grow: 1; margin-right: 8px;">
                         <ui:Label text="интеллект" class="stat-name"/>
                         <ui:VisualElement class="stat-top-row">
@@ -242,7 +200,6 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
 
-                    <!-- ХАРИЗМА -->
                     <ui:VisualElement class="stat-block" name="chaBlock" style="flex-grow: 1;">
                         <ui:Label text="харизма" class="stat-name"/>
                         <ui:VisualElement class="stat-top-row">
@@ -281,32 +238,71 @@
 
             </ui:VisualElement>
 
-            <!-- Правая колонка: оружие / снаряжение / заклинания -->
             <ui:VisualElement style="flex-grow: 1;">
 
                 <ui:VisualElement class="card" style="margin-bottom: 8px;">
-                    <ui:Label text="оружие" class="card-label" style="font-size: 14px; -unity-text-align: middle-left; margin-bottom: 6px;"/>
-                    <ui:TextField name="weaponsField" multiline="true" style="height: 100px; color: rgb(61,43,31);"/>
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <ui:Label text="оружие" class="card-label" style="font-size: 14px;"/>
+                        <ui:VisualElement style="flex-direction: row; align-items: center;">
+                            <ui:DropdownField name="weaponPickerField" style="width: 230px; margin-right: 6px; color: rgb(61,43,31);"/>
+                            <ui:Button text="+ добавить" name="addWeaponBtn" style="font-size: 11px; padding: 2px 8px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 3px;">
+                        <ui:Label text="Название" class="card-label" style="width: 160px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:Label text="Урон" class="card-label" style="width: 110px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:Label text="Вес" class="card-label" style="width: 55px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:VisualElement style="width: 26px;"/>
+                    </ui:VisualElement>
+                    <ui:ScrollView name="weaponsScroll" style="max-height: 120px;">
+                        <ui:VisualElement name="weaponsContainer"/>
+                    </ui:ScrollView>
                 </ui:VisualElement>
 
                 <ui:VisualElement class="card" style="margin-bottom: 8px;">
-                    <ui:Label text="снаряжение" class="card-label" style="font-size: 14px; -unity-text-align: middle-left; margin-bottom: 6px;"/>
-                    <ui:TextField name="equipmentField" multiline="true" style="height: 80px; color: rgb(61,43,31);"/>
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <ui:Label text="инвентарь" class="card-label" style="font-size: 14px;"/>
+                        <ui:Button text="+ добавить" name="addInventoryBtn" style="font-size: 11px; padding: 2px 8px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 3px;">
+                        <ui:Label text="Название" class="card-label" style="width: 280px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:Label text="Кол-во" class="card-label" style="width: 50px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:Label text="Вес" class="card-label" style="width: 55px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:VisualElement style="width: 26px;"/>
+                    </ui:VisualElement>
+                    <ui:ScrollView name="inventoryScroll" style="max-height: 140px;">
+                        <ui:VisualElement name="inventoryContainer"/>
+                    </ui:ScrollView>
+                    <ui:Label text="Вес: 0 / 0 фунтов" name="inventoryWeightLabel" style="color: rgb(61,43,31); font-size: 11px; -unity-font-style: bold; margin-top: 6px; -unity-text-align: middle-right;"/>
                 </ui:VisualElement>
 
                 <ui:VisualElement class="card">
-                    <ui:Label text="заклинания" class="card-label" style="font-size: 14px; -unity-text-align: middle-left; margin-bottom: 6px;"/>
-                    <ui:TextField name="spellsField" multiline="true" style="height: 140px; color: rgb(61,43,31);"/>
+                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <ui:Label text="заклинания" class="card-label" style="font-size: 14px;"/>
+                        <ui:VisualElement style="flex-direction: row; align-items: center;">
+                            <ui:DropdownField name="spellPickerField" style="width: 230px; margin-right: 6px; color: rgb(61,43,31);"/>
+                            <ui:Button text="+ добавить" name="addSpellBtn" style="font-size: 11px; padding: 2px 8px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 3px;">
+                        <ui:Label text="Название" class="card-label" style="width: 220px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:Label text="Уровень" class="card-label" style="width: 40px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:Label text="Описание" class="card-label" style="width: 220px; margin-right: 4px; font-size: 10px; -unity-text-align: middle-left;"/>
+                        <ui:VisualElement style="width: 26px;"/>
+                    </ui:VisualElement>
+                    <ui:ScrollView name="spellsScroll" style="max-height: 160px;">
+                        <ui:VisualElement name="spellsContainer"/>
+                    </ui:ScrollView>
+                    <ui:Label text="заклинания по уровням" class="card-label" style="font-size: 12px; margin-top: 10px; margin-bottom: 4px; -unity-font-style: bold;"/>
+                    <ui:VisualElement name="spellHistogram" style="flex-direction: row; align-items: flex-end; height: 170px; justify-content: space-between; background-color: rgb(61, 43, 31); border-radius: 6px; padding: 12px; margin-top: 6px;"/>
                 </ui:VisualElement>
 
             </ui:VisualElement>
 
         </ui:VisualElement>
 
-        <!-- Ошибки валидации -->
         <ui:Label text="" name="errorLabel" style="color: rgb(255, 120, 120); white-space: normal; margin-top: 12px; font-size: 13px;"/>
 
-        <!-- Кнопки сохранить/отмена -->
         <ui:VisualElement style="flex-direction: row; justify-content: flex-end; margin-top: 12px; margin-bottom: 20px;">
             <ui:Button text="Отмена" name="cancelBtn" style="margin-right: 10px; padding-left: 20px; padding-right: 20px;"/>
             <ui:Button text="Сохранить" name="saveBtn" style="background-color: rgb(201, 179, 117); color: rgb(61,43,31); -unity-font-style: bold; padding-left: 20px; padding-right: 20px;"/>

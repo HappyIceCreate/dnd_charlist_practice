@@ -1,0 +1,76 @@
+{
+  "id": "48d5e3b2-3314-4aa8-a94c-1cf63bec9c9f",
+  "name": "Пып",
+  "level": 1,
+  "experience": 0,
+  "characterClass": "Паладин",
+  "subclass": "",
+  "race": "Полуэльф",
+  "background": "тыы",
+  "alignment": null,
+  "strength": 10,
+  "dexterity": 11,
+  "constitution": 11,
+  "intelligence": 10,
+  "wisdom": 10,
+  "charisma": 12,
+  "armorClass": 10,
+  "proficiencyBonus": 2,
+  "initiative": 0,
+  "speed": 30,
+  "skills": {
+    "strSave": false,
+    "dexSave": false,
+    "conSave": false,
+    "intSave": false,
+    "wisSave": false,
+    "chaSave": false,
+    "athletics": false,
+    "acrobatics": false,
+    "sleightOfHand": false,
+    "stealth": false,
+    "perception": false,
+    "survival": false,
+    "medicine": false,
+    "insight": false,
+    "animalHandling": false,
+    "analysis": false,
+    "history": false,
+    "magic": false,
+    "nature": false,
+    "religion": false,
+    "performance": false,
+    "intimidation": false,
+    "deception": false,
+    "persuasion": false
+  },
+  "weaponsText": null,
+  "equipmentText": null,
+  "spellsText": null,
+  "weapons": [
+    {
+      "name": "Булава",
+      "damage": "1к6 дробящий",
+      "weight": 4.0
+    }
+  ],
+  "inventory": [
+    {
+      "itemName": "пиво",
+      "quantity": 5,
+      "weight": 10.0
+    },
+    {
+      "itemName": "рубин",
+      "quantity": 15,
+      "weight": 4.0
+    }
+  ],
+  "spells": [
+    {
+      "name": "Лечение ран",
+      "level": 1,
+      "description": "Касанием восстанавливает хиты существу."
+    }
+  ]
+}

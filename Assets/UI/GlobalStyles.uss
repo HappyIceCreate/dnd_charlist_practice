@@ -3,11 +3,6 @@ Label {
     -unity-font-style: normal;
 }
 
-/* ===== Цветовая схема макета ===== */
-/* Фон: тёмно-коричневый #3D2B1F
-   Карточки: охра/бежевый #C9B375
-   Текст на карточках: тёмно-коричневый #3D2B1F */
-
 .card {
     background-color: rgb(201, 179, 117);
     border-radius: 8px;
@@ -83,4 +78,26 @@ Label {
     font-size: 11px;
     width: 18px;
     -unity-text-align: middle-center;
+}
+
+.unity-scroller__low-button,
+.unity-scroller__high-button {
+    display: none;
+}
+
+#characterList .unity-scroller--vertical {
+    width: 8px;
+}
+
+#characterList .unity-base-slider--vertical .unity-base-slider__tracker {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    width: 8px;
+}
+
+#characterList .unity-base-slider--vertical .unity-base-slider__dragger {
+    background-color: rgb(201, 179, 117);
+    border-radius: 4px;
+    width: 8px;
+    border-width: 0;
 }

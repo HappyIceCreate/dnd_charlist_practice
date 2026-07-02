@@ -7,7 +7,6 @@ public static class DataManager
 {
     private static string dataPath = Application.dataPath + "/Data/";
 
-    // Сохранить персонажа
     public static void SaveCharacter(CharacterData character)
     {
         if (!Directory.Exists(dataPath))
@@ -20,7 +19,6 @@ public static class DataManager
         Debug.Log("Сохранен персонаж: " + character.name);
     }
 
-    // Загрузить всех персонажей
     public static List<CharacterData> LoadAllCharacters()
     {
         List<CharacterData> characters = new List<CharacterData>();
@@ -48,7 +46,6 @@ public static class DataManager
         return characters;
     }
 
-    // Загрузить одного персонажа по ID
     public static CharacterData LoadCharacter(string id)
     {
         string filePath = dataPath + id + ".json";
@@ -62,7 +59,6 @@ public static class DataManager
         return JsonConvert.DeserializeObject<CharacterData>(json);
     }
 
-    // Удалить персонажа
     public static void DeleteCharacter(string id)
     {
         string filePath = dataPath + id + ".json";
@@ -73,7 +69,6 @@ public static class DataManager
         }
     }
 
-    // Проверка существует ли персонаж
     public static bool CharacterExists(string id)
     {
         string filePath = dataPath + id + ".json";

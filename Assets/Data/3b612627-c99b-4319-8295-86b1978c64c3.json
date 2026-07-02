@@ -1,0 +1,84 @@
+{
+  "id": "3b612627-c99b-4319-8295-86b1978c64c3",
+  "name": "Бендельгрот",
+  "level": 3,
+  "experience": 0,
+  "characterClass": "Чародей",
+  "subclass": "Пып",
+  "race": "Полуэльф",
+  "background": "ууууууууу",
+  "alignment": null,
+  "strength": 10,
+  "dexterity": 10,
+  "constitution": 10,
+  "intelligence": 10,
+  "wisdom": 10,
+  "charisma": 10,
+  "armorClass": 10,
+  "proficiencyBonus": 2,
+  "initiative": 0,
+  "speed": 30,
+  "skills": {
+    "strSave": false,
+    "dexSave": false,
+    "conSave": false,
+    "intSave": false,
+    "wisSave": false,
+    "chaSave": false,
+    "athletics": false,
+    "acrobatics": false,
+    "sleightOfHand": false,
+    "stealth": false,
+    "perception": false,
+    "survival": true,
+    "medicine": false,
+    "insight": true,
+    "animalHandling": false,
+    "analysis": true,
+    "history": false,
+    "magic": true,
+    "nature": false,
+    "religion": false,
+    "performance": false,
+    "intimidation": false,
+    "deception": false,
+    "persuasion": true
+  },
+  "weaponsText": "",
+  "equipmentText": "",
+  "spellsText": "",
+  "inventory": [
+    {
+      "itemName": "Рубин",
+      "quantity": 1,
+      "weight": 2.0
+    },
+    {
+      "itemName": "Рубин",
+      "quantity": 1,
+      "weight": 2.0
+    }
+  ],
+  "spells": [
+    {
+      "name": "Облако смерти",
+      "level": 5,
+      "description": "Ядовитое облако в области, наносящее урон ядом каждый ход."
+    },
+    {
+      "name": "Волшебная рука",
+      "level": 0,
+      "description": "Создаёт спектральную руку для манипуляции предметами на расстоянии."
+    },
+    {
+      "name": "Огненный снаряд",
+      "level": 0,
+      "description": "Заговор, метающий огненный снаряд, причиняющий урон огнём."
+    },
+    {
+      "name": "Гипнотический узор",
+      "level": 3,
+      "description": "Завораживает существ в области, они получают состояние заворожён."
+    }
+  ]
+}
